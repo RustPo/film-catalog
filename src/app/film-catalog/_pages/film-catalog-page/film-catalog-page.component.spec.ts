@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FilmCatalogPageComponent } from './film-catalog-page.component';
+import { basicTestingProviders } from '@shared/providers/basic-testing-provider';
 
 describe('FilmCatalogPageComponent', () => {
   let component: FilmCatalogPageComponent;
@@ -8,9 +9,9 @@ describe('FilmCatalogPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FilmCatalogPageComponent]
-    })
-    .compileComponents();
+      imports: [FilmCatalogPageComponent],
+      providers: [basicTestingProviders],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FilmCatalogPageComponent);
     component = fixture.componentInstance;
