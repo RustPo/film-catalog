@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="5" failures="0" errors="0" time="7.271">
+  <testsuite name="FilmCatalogContentComponent" errors="0" failures="0" skipped="0" timestamp="2025-09-07T08:59:35" time="3.24" tests="1">
+    <testcase classname="FilmCatalogContentComponent should create" name="FilmCatalogContentComponent should create" time="0.084">
+    </testcase>
+  </testsuite>
+  <testsuite name="BasicLayoutComponent" errors="0" failures="0" skipped="0" timestamp="2025-09-07T08:59:35" time="3.285" tests="1">
+    <testcase classname="BasicLayoutComponent should create" name="BasicLayoutComponent should create" time="0.107">
+    </testcase>
+  </testsuite>
+  <testsuite name="FilmCatalogPageComponent" errors="0" failures="0" skipped="0" timestamp="2025-09-07T08:59:35" time="3.283" tests="1">
+    <testcase classname="FilmCatalogPageComponent should create" name="FilmCatalogPageComponent should create" time="0.12">
+    </testcase>
+  </testsuite>
+  <testsuite name="AppComponent" errors="0" failures="0" skipped="0" timestamp="2025-09-07T08:59:35" time="3.383" tests="2">
+    <testcase classname="AppComponent should create the app" name="AppComponent should create the app" time="0.07">
+    </testcase>
+    <testcase classname="AppComponent should have the &apos;film-catalog&apos; title" name="AppComponent should have the &apos;film-catalog&apos; title" time="0.012">
+    </testcase>
+  </testsuite>
+</testsuites>

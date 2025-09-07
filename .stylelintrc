@@ -1,0 +1,28 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-standard-scss",
+    "stylelint-config-idiomatic-order"
+  ],
+  "rules": {
+    "max-nesting-depth": 5,
+    "no-empty-source": null,
+    "order/properties-alphabetical-order": null,
+    "selector-class-pattern": null,
+    "value-no-vendor-prefix": null,
+    "selector-pseudo-element-no-unknown": [
+      true,
+      {
+        "ignorePseudoElements": ["ng-deep"]
+      }
+    ],
+    "scss/load-no-partial-leading-underscore": null,
+    "scss/load-partial-extension": null
+  },
+  "overrides": [
+    {
+      "files": ["**/*.scss"],
+      "customSyntax": "postcss-scss"
+    }
+  ]
+}
