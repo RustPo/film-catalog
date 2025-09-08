@@ -16,9 +16,15 @@ import { validateWith } from '@shared/utils/zod/zod-rx';
 export class MovieApiService {
   private readonly http = inject(HttpClient);
 
-  public getMoviesList(page: number, perPage: number): Observable<TMoviesList> {
+  public getMoviesList(
+    page: number,
+    perPage: number,
+    title: string
+  ): Observable<TMoviesList> {
     return this.http
-      .get<TMoviesList>(`${API_MOVIES_GET}?_page=${page}&_per_page=${perPage}`)
+      .get<TMoviesList>(
+        `${API_MOVIES_GET}?_page=${page}&_per_page=${perPage}&title=${title}`
+      )
       .pipe(validateWith(MoviesListSchema));
   }
 
