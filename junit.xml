@@ -1,21 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="5" failures="0" errors="0" time="7.271">
-  <testsuite name="FilmCatalogContentComponent" errors="0" failures="0" skipped="0" timestamp="2025-09-07T08:59:35" time="3.24" tests="1">
-    <testcase classname="FilmCatalogContentComponent should create" name="FilmCatalogContentComponent should create" time="0.084">
+<testsuites name="jest tests" tests="9" failures="0" errors="0" time="13.6">
+  <testsuite name="MovieSearchComponent" errors="0" failures="0" skipped="0" timestamp="2025-09-08T03:44:29" time="7.133" tests="1">
+    <testcase classname="MovieSearchComponent should create" name="MovieSearchComponent should create" time="0.553">
     </testcase>
   </testsuite>
-  <testsuite name="BasicLayoutComponent" errors="0" failures="0" skipped="0" timestamp="2025-09-07T08:59:35" time="3.285" tests="1">
-    <testcase classname="BasicLayoutComponent should create" name="BasicLayoutComponent should create" time="0.107">
+  <testsuite name="MovieService" errors="0" failures="0" skipped="0" timestamp="2025-09-08T03:44:28" time="7.488" tests="1">
+    <testcase classname="MovieService should be created" name="MovieService should be created" time="0.109">
     </testcase>
   </testsuite>
-  <testsuite name="FilmCatalogPageComponent" errors="0" failures="0" skipped="0" timestamp="2025-09-07T08:59:35" time="3.283" tests="1">
-    <testcase classname="FilmCatalogPageComponent should create" name="FilmCatalogPageComponent should create" time="0.12">
+  <testsuite name="MoviePreviewCardComponent" errors="0" failures="0" skipped="0" timestamp="2025-09-08T03:44:28" time="7.688" tests="1">
+    <testcase classname="MoviePreviewCardComponent should create" name="MoviePreviewCardComponent should create" time="0.586">
     </testcase>
   </testsuite>
-  <testsuite name="AppComponent" errors="0" failures="0" skipped="0" timestamp="2025-09-07T08:59:35" time="3.383" tests="2">
-    <testcase classname="AppComponent should create the app" name="AppComponent should create the app" time="0.07">
+  <testsuite name="BasicLayoutComponent" errors="0" failures="0" skipped="0" timestamp="2025-09-08T03:44:28" time="7.818" tests="1">
+    <testcase classname="BasicLayoutComponent should create" name="BasicLayoutComponent should create" time="0.57">
     </testcase>
-    <testcase classname="AppComponent should have the &apos;film-catalog&apos; title" name="AppComponent should have the &apos;film-catalog&apos; title" time="0.012">
+  </testsuite>
+  <testsuite name="moviesListComponent" errors="0" failures="0" skipped="0" timestamp="2025-09-08T03:44:28" time="8.217" tests="1">
+    <testcase classname="moviesListComponent should create" name="moviesListComponent should create" time="0.594">
+    </testcase>
+  </testsuite>
+  <testsuite name="MoviesContentComponent" errors="0" failures="0" skipped="0" timestamp="2025-09-08T03:44:28" time="8.171" tests="1">
+    <testcase classname="MoviesContentComponent should create" name="MoviesContentComponent should create" time="0.673">
+    </testcase>
+  </testsuite>
+  <testsuite name="MoviesPageComponent" errors="0" failures="0" skipped="0" timestamp="2025-09-08T03:44:28" time="8.272" tests="1">
+    <testcase classname="MoviesPageComponent should create" name="MoviesPageComponent should create" time="0.747">
+    </testcase>
+  </testsuite>
+  <testsuite name="AppComponent" errors="0" failures="0" skipped="0" timestamp="2025-09-08T03:44:36" time="1.315" tests="1">
+    <testcase classname="AppComponent should create the app" name="AppComponent should create the app" time="0.055">
+    </testcase>
+  </testsuite>
+  <testsuite name="MovieApiService" errors="0" failures="0" skipped="0" timestamp="2025-09-08T03:44:36" time="1.248" tests="1">
+    <testcase classname="MovieApiService should be created" name="MovieApiService should be created" time="0.035">
     </testcase>
   </testsuite>
 </testsuites>
