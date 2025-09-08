@@ -13,10 +13,23 @@ export class MovieService {
   private _moviesData = signal<TMoviesList | null>(null);
   private _isLoading = signal(false);
   private _error = signal<string | null>(null);
+  private _titleForSerach = signal<string>('');
 
   public moviesList = computed(() => this._moviesList());
   public isLoading = computed(() => this._isLoading());
   public error = computed(() => this._error());
+  public titleForSerach = computed(() => this._titleForSerach());
+
+  public setTitleForSerach(title: string): void {
+    this._titleForSerach.set(title);
+  }
+
+  public reset(): void {
+    this._moviesList.set([]);
+    this._moviesData.set(null);
+    this._isLoading.set(false);
+    this._error.set(null);
+  }
 
   public getMoviesList(page: number, perPage: number): void {
     if (this._moviesData() && !this._moviesData()?.next) {
@@ -26,20 +39,22 @@ export class MovieService {
     this._isLoading.set(true);
     this._error.set(null);
 
-    this.movieApiService.getMoviesList(page, perPage).subscribe({
-      next: (moviesList) => {
-        this._moviesData.set(moviesList);
-        this._moviesList.set([...this.moviesList(), ...moviesList.data]);
-        this._isLoading.set(false);
-      },
-      error: (error) => {
-        toast('Ошибка при загрузке', {
-          description: 'Пожалуйста, попробуйте позже',
-        });
+    this.movieApiService
+      .getMoviesList(page, perPage, this.titleForSerach())
+      .subscribe({
+        next: (moviesList) => {
+          this._moviesData.set(moviesList);
+          this._moviesList.set([...this.moviesList(), ...moviesList.data]);
+          this._isLoading.set(false);
+        },
+        error: (error) => {
+          toast('Ошибка при загрузке', {
+            description: 'Пожалуйста, попробуйте позже',
+          });
 
-        this._error.set(error.message);
-        this._isLoading.set(false);
-      },
-    });
+          this._error.set(error.message);
+          this._isLoading.set(false);
+        },
+      });
   }
 }

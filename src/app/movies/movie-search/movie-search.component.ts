@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { MovieService } from '@shared/services/movie/movie.service';
 import { ZardInputDirective } from '@shared/zard-ui/components/input/input.directive';
 
 @Component({
@@ -8,4 +9,10 @@ import { ZardInputDirective } from '@shared/zard-ui/components/input/input.direc
   styleUrl: './movie-search.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MovieSearchComponent {}
+export class MovieSearchComponent {
+  private movieService = inject(MovieService);
+
+  onInput(value: string): void {
+    this.movieService.setTitleForSerach(value);
+  }
+}

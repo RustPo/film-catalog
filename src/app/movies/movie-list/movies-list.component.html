@@ -1,3 +1,9 @@
+@if (movieService.titleForSerach()) {
+  <h2 class="py-4 text-xl text-gray-400">
+    Результаты поиска по: {{ movieService.titleForSerach() }}
+  </h2>
+}
+
 <div class="movie-list grid md:grid-cols-3 sm:grid-cols-2 gap-4 items-stretch">
   @for (movie of movieService.moviesList(); track $index) {
     <app-movie-preview-card [movie]="movie"></app-movie-preview-card>
