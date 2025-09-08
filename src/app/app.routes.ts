@@ -23,6 +23,11 @@ export const routes: Routes = [
             (m) => m.routes
           ),
       },
+      {
+        path: 'movie',
+        loadChildren: () =>
+          import('./movie/movie.routes').then((m) => m.routes),
+      },
     ],
   },
 ];

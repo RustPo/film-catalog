@@ -1,4 +1,7 @@
-<z-card class="h-full cursor-pointer hover:bg-accent">
+<z-card
+  class="h-full cursor-pointer hover:bg-accent"
+  (click)="naviagteToMoviePage(movie()?.id)"
+>
   <div class="movie">
     <div class="movie__pic">
       <img

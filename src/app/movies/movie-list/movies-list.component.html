@@ -11,7 +11,7 @@
 </div>
 
 @if (movieService.isLoading()) {
-  <z-loader></z-loader>
+  <z-loader class="p-12"></z-loader>
 }
 @if (!movieService.isLoading() && movieService.moviesList().length == 0) {
   <h2 class="text-center text-gray-400">Здесь пока пусто</h2>
