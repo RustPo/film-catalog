@@ -1,11 +1,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  DestroyRef,
-  ElementRef,
+  effect,
   inject,
   OnInit,
-  ViewChild,
 } from '@angular/core';
 import { MoviePreviewCardComponent } from '@shared/components/movie-preview-card/movie-preview-card.component';
 import { MovieService } from '@shared/services/movie/movie.service';
@@ -21,11 +19,7 @@ import { ZardLoaderComponent } from '@shared/zard-ui/components/loader/loader.co
     '(window:scroll)': 'onWindowScroll()',
   },
 })
-export class moviesListComponent implements OnInit {
-  @ViewChild('anchor', { static: true }) anchor!: ElementRef<HTMLElement>;
-
-  private destroyRef = inject(DestroyRef);
-
+export class MoviesListComponent implements OnInit {
   protected movieService = inject(MovieService);
   private page = 1;
   private perPage = 12;
