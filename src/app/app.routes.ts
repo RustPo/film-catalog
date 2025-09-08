@@ -16,6 +16,13 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./movies/movies.routes').then((m) => m.routes),
       },
+      {
+        path: 'technical-works',
+        loadChildren: () =>
+          import('./technical-works/technical-works.routes').then(
+            (m) => m.routes
+          ),
+      },
     ],
   },
 ];

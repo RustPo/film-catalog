@@ -1,7 +1,7 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { MovieApiService } from '@shared/api/movie/movie-api.service';
 import { TMovie, TMoviesList } from '@shared/api/movie/types/movie-api.types';
-import { map, Observable, of } from 'rxjs';
+import { toast } from 'ngx-sonner';
 
 @Injectable({
   providedIn: 'root',
@@ -33,6 +33,10 @@ export class MovieService {
         this._isLoading.set(false);
       },
       error: (error) => {
+        toast('Ошибка при загрузке', {
+          description: 'Пожалуйста, попробуйте позже',
+        });
+
         this._error.set(error.message);
         this._isLoading.set(false);
       },
