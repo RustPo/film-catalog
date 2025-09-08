@@ -1,0 +1,15 @@
+<z-card class="h-full cursor-pointer hover:bg-accent">
+  <div class="movie">
+    <div class="movie__pic">
+      <img
+        src="{{ movie()?.Poster }}"
+        class="movie__img border rounded-lg"
+        alt=""
+      />
+    </div>
+    <div class="movie__info py-2">
+      <p class="text-lg">{{ movie()?.title }}</p>
+      <span class="text-sm text-gray-400">{{ movie()?.plot }}</span>
+    </div>
+  </div>
+</z-card>
