@@ -1,15 +1,9 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  effect,
-  inject,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MoviePreviewCardComponent } from '@shared/components/movie-preview-card/movie-preview-card.component';
 import { MovieService } from '@shared/services/movie/movie.service';
 import { ZardLoaderComponent } from '@shared/zard-ui/components/loader/loader.component';
 import { toObservable } from '@angular/core/rxjs-interop';
-import { debounce, debounceTime, distinctUntilChanged } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
 
 @Component({
   selector: 'app-movie-list',
@@ -21,7 +15,7 @@ import { debounce, debounceTime, distinctUntilChanged } from 'rxjs';
     '(window:scroll)': 'onWindowScroll()',
   },
 })
-export class MoviesListComponent implements OnInit {
+export class MoviesListComponent {
   protected movieService = inject(MovieService);
   private page = 1;
   private perPage = 12;
@@ -34,9 +28,6 @@ export class MoviesListComponent implements OnInit {
         this.movieService.reset();
         this.movieService.getMoviesList(this.page, this.perPage);
       });
-  }
-  ngOnInit(): void {
-    // this.movieService.getMoviesList(this.page, this.perPage);
   }
 
   onWindowScroll() {
