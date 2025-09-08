@@ -25,6 +25,7 @@ export const MovieSchema = z.object({
   Type: z.string(),
   Response: z.string(),
   Images: z.array(MovieImageSchema),
+  id: z.string(),
 });
 
 export type TMovie = z.infer<typeof MovieSchema>;

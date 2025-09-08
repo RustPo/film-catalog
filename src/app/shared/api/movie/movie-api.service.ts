@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
 import {
+  MovieSchema,
   MoviesListSchema,
   TMovie,
   TMoviesList,
@@ -26,6 +27,12 @@ export class MovieApiService {
         `${API_MOVIES_GET}?_page=${page}&_per_page=${perPage}&title=${title}`
       )
       .pipe(validateWith(MoviesListSchema));
+  }
+
+  public getMovieById(id: string): Observable<TMovie> {
+    return this.http
+      .get<TMovie>(`${API_MOVIES_GET}/${id}`)
+      .pipe(validateWith(MovieSchema));
   }
 
   public searchMovieByTitle(title: string): Observable<TMoviesList> {
