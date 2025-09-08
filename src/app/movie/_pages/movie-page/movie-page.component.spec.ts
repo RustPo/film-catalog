@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MoviePageComponent } from './movie-page.component';
+import { basicTestingProviders } from '@shared/providers/basic-testing-provider';
+import { signal } from '@angular/core';
 
 describe('MoviePageComponent', () => {
   let component: MoviePageComponent;
@@ -8,12 +10,14 @@ describe('MoviePageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MoviePageComponent]
-    })
-    .compileComponents();
+      imports: [MoviePageComponent],
+      providers: [basicTestingProviders],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(MoviePageComponent);
     component = fixture.componentInstance;
+
+    fixture.componentRef.setInput('movieId', '1');
     fixture.detectChanges();
   });
 

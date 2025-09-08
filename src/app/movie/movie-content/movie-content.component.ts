@@ -9,5 +9,5 @@ import { MovieComponent } from '../movie/movie.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MovieContentComponent {
-  public readonly movieId = input.required<string>();
+  public movieId = input.required<string>();
 }
