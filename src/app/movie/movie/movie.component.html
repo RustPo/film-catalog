@@ -1,0 +1,25 @@
+@if (movie) {
+  <div class="movie">
+    <div class="movie__pic">
+      <img
+        src="{{ movie.Poster }}"
+        class="movie__img border rounded-lg"
+        alt=""
+      />
+    </div>
+    <div class="movie__info py-2">
+      <p class="text-lg">{{ movie.title }}</p>
+      <span class="text-sm">{{ movie.plot }}</span>
+    </div>
+    <div class="movie__info py-2 text-sm text-gray-400">
+      <p class="">Год: {{ movie.released }}</p>
+      <p class="">Рейтинг: {{ movie.imdbRating }}</p>
+      <p class="">Страна: {{ movie.Country }}</p>
+      <p class="">Жанр: {{ movie.genre }}</p>
+      <p class="">Режиссер: {{ movie.director }}</p>
+      <p class="">Актеры: {{ movie.actors }}</p>
+    </div>
+  </div>
+} @else {
+  <z-loader></z-loader>
+}

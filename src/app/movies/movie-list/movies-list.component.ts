@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnDestroy,
+} from '@angular/core';
 import { MoviePreviewCardComponent } from '@shared/components/movie-preview-card/movie-preview-card.component';
 import { MovieService } from '@shared/services/movie/movie.service';
 import { ZardLoaderComponent } from '@shared/zard-ui/components/loader/loader.component';
@@ -15,7 +20,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs';
     '(window:scroll)': 'onWindowScroll()',
   },
 })
-export class MoviesListComponent {
+export class MoviesListComponent implements OnDestroy {
   protected movieService = inject(MovieService);
   private page = 1;
   private perPage = 12;
@@ -28,6 +33,10 @@ export class MoviesListComponent {
         this.movieService.reset();
         this.movieService.getMoviesList(this.page, this.perPage);
       });
+  }
+
+  ngOnDestroy(): void {
+    this.movieService.reset();
   }
 
   onWindowScroll() {

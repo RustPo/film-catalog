@@ -2,6 +2,7 @@ import { computed, inject, Injectable, signal } from '@angular/core';
 import { MovieApiService } from '@shared/api/movie/movie-api.service';
 import { TMovie, TMoviesList } from '@shared/api/movie/types/movie-api.types';
 import { toast } from 'ngx-sonner';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ export class MovieService {
 
   private _moviesList = signal<TMovie[]>([]);
   private _moviesData = signal<TMoviesList | null>(null);
-  private _isLoading = signal(false);
+  private _isLoading = signal(true);
   private _error = signal<string | null>(null);
   private _titleForSerach = signal<string>('');
 
@@ -27,8 +28,12 @@ export class MovieService {
   public reset(): void {
     this._moviesList.set([]);
     this._moviesData.set(null);
-    this._isLoading.set(false);
+    this._isLoading.set(true);
     this._error.set(null);
+  }
+
+  public getMovieById(id: string): Observable<TMovie> {
+    return this.movieApiService.getMovieById(id);
   }
 
   public getMoviesList(page: number, perPage: number): void {

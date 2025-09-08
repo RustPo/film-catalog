@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { delay, map, Observable, timeout } from 'rxjs';
 
 import {
   MovieSchema,
@@ -16,6 +16,7 @@ import { validateWith } from '@shared/utils/zod/zod-rx';
 })
 export class MovieApiService {
   private readonly http = inject(HttpClient);
+  private delay = 1500; // задержка чтобы запрос ждать подольше =)
 
   public getMoviesList(
     page: number,
@@ -26,18 +27,18 @@ export class MovieApiService {
       .get<TMoviesList>(
         `${API_MOVIES_GET}?_page=${page}&_per_page=${perPage}&title=${title}`
       )
-      .pipe(validateWith(MoviesListSchema));
+      .pipe(delay(this.delay), validateWith(MoviesListSchema));
   }
 
   public getMovieById(id: string): Observable<TMovie> {
     return this.http
       .get<TMovie>(`${API_MOVIES_GET}/${id}`)
-      .pipe(validateWith(MovieSchema));
+      .pipe(delay(this.delay), validateWith(MovieSchema));
   }
 
   public searchMovieByTitle(title: string): Observable<TMoviesList> {
     return this.http
       .get<TMoviesList>(`${API_MOVIES_GET}?title=${title}`)
-      .pipe(validateWith(MoviesListSchema));
+      .pipe(delay(this.delay), validateWith(MoviesListSchema));
   }
 }
