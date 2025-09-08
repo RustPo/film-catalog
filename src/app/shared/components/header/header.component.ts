@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { ThemeService } from '@shared/services/theme/theme-service';
 import { SvgIconComponent } from 'angular-svg-icon';
-import { FilmSearchComponent } from 'src/app/film-catalog/film-search/film-search.component';
+import { MovieSearchComponent } from 'src/app/movies/movie-search/movie-search.component';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
-  imports: [SvgIconComponent, FilmSearchComponent],
+  imports: [SvgIconComponent, MovieSearchComponent],
 })
 export class HeaderComponent {
   private readonly themeService = inject(ThemeService);

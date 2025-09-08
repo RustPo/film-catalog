@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
@@ -15,14 +14,14 @@ import { ZardLoaderComponent } from '@shared/zard-ui/components/loader/loader.co
 @Component({
   selector: 'app-movie-list',
   imports: [ZardLoaderComponent, MoviePreviewCardComponent],
-  templateUrl: './movie-list.component.html',
-  styleUrl: './movie-list.component.css',
+  templateUrl: './movies-list.component.html',
+  styleUrl: './movies-list.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '(window:scroll)': 'onWindowScroll()',
   },
 })
-export class movieListComponent implements OnInit {
+export class moviesListComponent implements OnInit {
   @ViewChild('anchor', { static: true }) anchor!: ElementRef<HTMLElement>;
 
   private destroyRef = inject(DestroyRef);

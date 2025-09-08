@@ -9,12 +9,12 @@ export const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'film-catalog',
+        redirectTo: 'movies',
       },
       {
-        path: 'film-catalog',
+        path: 'movies',
         loadChildren: () =>
-          import('./film-catalog/film-catalog.routes').then((m) => m.routes),
+          import('./movies/movies.routes').then((m) => m.routes),
       },
     ],
   },
