@@ -1,59 +1,42 @@
-# FilmCatalog
+# Каталог фильмов
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.7.
+Стек:
 
-## Development server
+- Angular 20
 
-To start a local development server, run:
+## Запуск
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+установите зависимости
 
 ```bash
-ng generate component component-name
+npm ci
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+запустите json-server (чтобы получать хоть какие то данные для отображения),
+файл `db.json` должен присутсвовать в корне проекта
 
 ```bash
-ng generate --help
+npx json-server db.json
 ```
 
-## Building
-
-To build the project run:
+запустите приложение
 
 ```bash
-ng build
+npm run start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+после успешного запуска приложение станет доступным на [http://localhost:4200](http://localhost:4200)
 
-## Running unit tests
+## Кратко о проекте
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Проектом является приложение для просмотра списка и карточек фильмов, с поиском по названию фильма
 
-```bash
-ng test
-```
+### Интеренсные подходы
 
-## Running end-to-end tests
+- `zod` - описаны схемы данных из апи, и добавлена валидация на корректность типов получаемых с севрера, с дальнейшей обработкой ошибок если данные не валидны
 
-For end-to-end (e2e) testing, run:
+- `health-check` - реализован сервис для проверки состояния сервера, оповестит пользователя если сервер будет не доступен, и возобновит работу приложения после успешеного ответа от сервера
 
-```bash
-ng e2e
-```
+- `CI/CD` - настроен пайаплайн на запуск автотестов при сосздании `PR` в `dev` и `main` + запрещено напрямую делать `push` в эти ветки без `PR`
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- `UI` - испольщована `ui` библиотека `ZardUI` для сокращения времени разработки
