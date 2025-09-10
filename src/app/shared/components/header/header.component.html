@@ -1,0 +1,31 @@
+<div
+  class="header flex items-center gap-2 justify-between p-4 max-sm:flex-col max-sm:items-start"
+>
+  <h1 class="header__title w-full text-xl md:text-3xl font-bold">
+    Каталог фильмов
+  </h1>
+
+  <div
+    class="header__controls flex gap-2 items-center justify-end w-full max-sm:justify-start"
+  >
+    <div class="header__search relative w-full">
+      <app-movie-search></app-movie-search>
+    </div>
+
+    <div class="header__buttons flex gap-4">
+      @if (getCurrentTheme === "light") {
+        <svg-icon
+          class="cursor-pointer"
+          (click)="toggleTheme()"
+          src="assets/icons/theme/Day.svg"
+        ></svg-icon>
+      } @else {
+        <svg-icon
+          class="cursor-pointer"
+          (click)="toggleTheme()"
+          src="assets/icons/theme/Night.svg"
+        ></svg-icon>
+      }
+    </div>
+  </div>
+</div>

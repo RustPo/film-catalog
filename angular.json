@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "film-catalog": {
+    "movies": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular": {
@@ -19,12 +19,13 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/film-catalog",
+            "outputPath": "dist/movies",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
+              "src/assets",
               {
                 "glob": "**/*",
                 "input": "public"
@@ -61,10 +62,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "film-catalog:build:production"
+              "buildTarget": "movies:build:production"
             },
             "development": {
-              "buildTarget": "film-catalog:build:development"
+              "buildTarget": "movies:build:development"
             }
           },
           "defaultConfiguration": "development"

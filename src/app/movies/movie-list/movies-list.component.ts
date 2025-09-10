@@ -1,0 +1,55 @@
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnDestroy,
+} from '@angular/core';
+import { MoviePreviewCardComponent } from '@shared/components/movie-preview-card/movie-preview-card.component';
+import { MovieService } from '@shared/services/movie/movie.service';
+import { ZardLoaderComponent } from '@shared/zard-ui/components/loader/loader.component';
+import { toObservable } from '@angular/core/rxjs-interop';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
+
+@Component({
+  selector: 'app-movie-list',
+  imports: [ZardLoaderComponent, MoviePreviewCardComponent],
+  templateUrl: './movies-list.component.html',
+  styleUrl: './movies-list.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '(window:scroll)': 'onWindowScroll()',
+  },
+})
+export class MoviesListComponent implements OnDestroy {
+  protected movieService = inject(MovieService);
+  private page = 1;
+  private perPage = 12;
+
+  constructor() {
+    toObservable(this.movieService.titleForSerach)
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe(() => {
+        this.page = 1;
+        this.movieService.reset();
+        this.movieService.getMoviesList(this.page, this.perPage);
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.movieService.reset();
+  }
+
+  onWindowScroll() {
+    if (this.movieService.isLoading()) return;
+    const bottom =
+      window.innerHeight + window.scrollY >= document.body.offsetHeight;
+    if (bottom) {
+      this.loadMore();
+    }
+  }
+
+  private loadMore(): void {
+    this.page++;
+    this.movieService.getMoviesList(this.page, this.perPage);
+  }
+}

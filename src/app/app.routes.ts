@@ -9,12 +9,28 @@ export const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'film-catalog',
+        redirectTo: 'movies',
       },
       {
-        path: 'film-catalog',
+        path: 'movies',
         loadChildren: () =>
-          import('./film-catalog/film-catalog.routes').then((m) => m.routes),
+          import('./movies/movies.routes').then((m) => m.routes),
+      },
+      {
+        path: 'technical-works',
+        loadChildren: () =>
+          import('./technical-works/technical-works.routes').then(
+            (m) => m.routes
+          ),
+      },
+      {
+        path: 'movie',
+        loadChildren: () =>
+          import('./movie/movie.routes').then((m) => m.routes),
+      },
+      {
+        path: '**',
+        redirectTo: 'movies',
       },
     ],
   },
