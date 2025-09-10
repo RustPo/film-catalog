@@ -2,7 +2,7 @@ import { computed, inject, Injectable, signal } from '@angular/core';
 import { MovieApiService } from '@shared/api/movie/movie-api.service';
 import { TMovie, TMoviesList } from '@shared/api/movie/types/movie-api.types';
 import { toast } from 'ngx-sonner';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -33,7 +33,15 @@ export class MovieService {
   }
 
   public getMovieById(id: string): Observable<TMovie> {
-    return this.movieApiService.getMovieById(id);
+    return this.movieApiService.getMovieById(id).pipe(
+      catchError((error) => {
+        toast('Ошибка при загрузке', {
+          description: 'Пожалуйста, попробуйте позже',
+        });
+
+        return of(error);
+      })
+    );
   }
 
   public getMoviesList(page: number, perPage: number): void {
